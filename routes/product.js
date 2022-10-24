@@ -23,8 +23,9 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
     const product = new Product({
         name: req.body.name,
-        description: req.body.description,
-        price: req.body.price,
+        mail: req.body.mail,
+        tel: req.body.tel,
+        leadSource: req.body.leadSource,
 
     })
     product.save();
@@ -35,9 +36,9 @@ router.post('/', (req, res) => {
 router.put('/:id', (req, res) => {
     Product.findByIdAndUpdate(req.params.id, {
         name: req.body.name,
-        description: req.body.description,
-        price: req.body.price,
-
+        mail: req.body.mail,
+        tel: req.body.tel,
+        leadSource: req.body.leadSource,
     })
         .then((product) => {
             res.json(product);
@@ -54,12 +55,3 @@ router.delete('/:id', (req, res) => {
 })
 
 module.exports = router;
-
-const products = [
-    {
-        id: 1,
-        name: "Product 1",
-        price: 100,
-        description: "Product 1 description",
-    }
-]
